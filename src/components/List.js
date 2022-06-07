@@ -14,6 +14,9 @@ const List = (props) => {
   const deleteItem = (item, ID, type) => {
     props.delete(item, ID, type);
   };
+  const deleteAll = () => {
+    props.deleteAll(props.data.id);
+  };
 
   return (
     <div>
@@ -49,6 +52,7 @@ const List = (props) => {
           );
         })}
       </ul>
+      <button onClick={deleteAll}>Delete All Completed</button>
     </div>
   );
 };

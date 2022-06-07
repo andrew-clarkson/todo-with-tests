@@ -58,6 +58,13 @@ function App() {
     );
   };
 
+  const deleteAll = (id) => {
+    let newLists = [...lists].filter((list) => {
+      return list.id !== id;
+    });
+    setLists(newLists);
+  };
+
   const checkItem = (item, listID, listType) => {
     setLists(
       lists.map((list) => {
@@ -90,6 +97,7 @@ function App() {
             data={list}
             add={addItem}
             delete={deleteItem}
+            deleteAll={deleteAll}
             check={checkItem}
           ></List>
         );
