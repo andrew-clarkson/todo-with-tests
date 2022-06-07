@@ -21,8 +21,23 @@ const starterList = [
   },
 ];
 
+const emptyList = {
+  nameOfList: 'New List',
+  id: 1,
+  items: {
+    todo: ['add item to begin'],
+    done: ['download todo app'],
+  },
+};
+
 function App() {
   const [lists, setLists] = useState(starterList);
+
+  const addList = () => {
+    setLists((prev) => {
+      return [...prev, emptyList];
+    });
+  };
 
   const addItem = (item, listID) => {
     setLists(
@@ -59,10 +74,11 @@ function App() {
   };
 
   const deleteList = (id) => {
-    let newLists = [...lists].filter((list) => {
-      return list.id !== id;
-    });
-    setLists(newLists);
+    setLists(
+      [...lists].filter((list) => {
+        return list.id !== id;
+      })
+    );
   };
 
   const deleteCompleted = (id) => {
@@ -71,7 +87,6 @@ function App() {
         if (list.id === id) {
           let listCopy = { ...list };
           listCopy.items.done = [];
-
           return listCopy;
         } else return list;
       })
@@ -102,16 +117,42 @@ function App() {
     );
   };
 
+  const editItem = (originalItem, editedItem, listID, type) => {
+    setLists(
+      lists.map((list) => {
+        if (list.id === listID) {
+          let newList = { ...list };
+          if (type === 'todo') {
+            let index = newList.items.todo.findIndex((i) => {
+              return i === originalItem;
+            });
+            newList.items.todo[index] = editedItem;
+            return newList;
+          } else {
+            let index = newList.items.done.findIndex((i) => {
+              return i === originalItem;
+            });
+            newList.items.done[index] = editedItem;
+            return newList;
+          }
+        } else return list;
+      })
+    );
+  };
+
   return (
     <div className='App'>
-      {lists.map((list) => {
+      <button onClick={addList}>Add New List</button>
+      {lists.map((list, i) => {
         return (
           <List
+            key={i}
             data={list}
             add={addItem}
             delete={deleteItem}
             deleteList={deleteList}
             deleteCompleted={deleteCompleted}
+            edit={editItem}
             check={checkItem}
           ></List>
         );

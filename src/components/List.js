@@ -23,10 +23,15 @@ const List = (props) => {
     props.deleteCompleted(props.data.id);
   };
 
+  const editItem = (originalItem, editedItem, ID, type) => {
+    props.edit(originalItem, editedItem, ID, type);
+  };
+
   return (
     <div>
-      <AddItem addItem={addItem} listID={props.data.id} />
       <h3>{props.data.nameOfList}</h3>
+
+      <AddItem addItem={addItem} listID={props.data.id} />
       <h3>To-do</h3>
       <ul>
         {props.data.items.todo.map((item, i) => {
@@ -36,6 +41,7 @@ const List = (props) => {
               item={item}
               check={checkItem}
               delete={deleteItem}
+              edit={editItem}
               listID={props.data.id}
               listType='todo'
             />
@@ -51,6 +57,7 @@ const List = (props) => {
               item={item}
               check={checkItem}
               delete={deleteItem}
+              edit={editItem}
               listID={props.data.id}
               listType='done'
             />
