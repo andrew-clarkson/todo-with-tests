@@ -22,7 +22,7 @@ const Item = (props) => {
     event.preventDefault();
     setEditable(false);
     props.edit(
-      props.item,
+      props.itemID,
       inputRef.current.value,
       props.listID,
       props.listType

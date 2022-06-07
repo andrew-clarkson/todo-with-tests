@@ -7,16 +7,16 @@ const starterList = [
     nameOfList: 'List #1',
     id: new Date(),
     items: {
-      todo: [{ name: 'laundry', id: new Date() }],
-      done: [{ name: 'download todo app', id: new Date() + 1 }],
+      todo: [{ name: 'add item to start', id: new Date() }],
+      done: [{ name: 'download todo app', id: new Date() - 1 }],
     },
   },
   {
     nameOfList: 'List #2',
     id: new Date(),
     items: {
-      todo: [{ name: 'milk', id: new Date() }],
-      done: [{ name: 'choco chips', id: new Date() }],
+      todo: [{ name: 'add item to start', id: new Date() }],
+      done: [{ name: 'completed items will show here', id: new Date() - 1 }],
     },
   },
 ];
@@ -30,7 +30,7 @@ function App() {
       id: new Date(),
       items: {
         todo: [{ name: 'add item to start', id: new Date() }],
-        done: [{ name: 'completed items will show here', id: new Date() }],
+        done: [{ name: 'completed items will show here', id: new Date() - 1 }],
       },
     };
 
@@ -117,22 +117,22 @@ function App() {
     );
   };
 
-  const editItem = (originalItem, editedItem, listID, type) => {
+  const editItem = (itemID, editedItem, listID, type) => {
     setLists(
       lists.map((list) => {
         if (list.id === listID) {
           let newList = { ...list };
           if (type === 'todo') {
             let index = newList.items.todo.findIndex((i) => {
-              return i === originalItem;
+              return i.id === itemID;
             });
-            newList.items.todo[index] = editedItem;
+            newList.items.todo[index].name = editedItem;
             return newList;
           } else {
             let index = newList.items.done.findIndex((i) => {
-              return i === originalItem;
+              return i.id === itemID;
             });
-            newList.items.done[index] = editedItem;
+            newList.items.done[index].name = editedItem;
             return newList;
           }
         } else return list;

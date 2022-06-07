@@ -23,8 +23,8 @@ const List = (props) => {
     props.deleteCompleted(props.data.id);
   };
 
-  const editItem = (originalItem, editedItem, ID, type) => {
-    props.edit(originalItem, editedItem, ID, type);
+  const editItem = (itemID, editedItem, ID, type) => {
+    props.edit(itemID, editedItem, ID, type);
   };
 
   return (
