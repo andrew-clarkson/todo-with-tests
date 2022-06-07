@@ -6,7 +6,7 @@ const Item = (props) => {
 
   const checkHandler = (event) => {
     event.preventDefault();
-    props.check(props.item, props.listID, props.listType);
+    props.check(props.item, props.itemID, props.listID, props.listType);
   };
   const deleteItem = (event) => {
     event.preventDefault();
@@ -31,22 +31,14 @@ const Item = (props) => {
 
   return (
     <li>
-      <button type='button' onClick={checkHandler}>
-        {props.listType === 'todo' ? 'Done' : 'Not Done'}
-      </button>
       {editable ? (
         <input type='text' ref={inputRef} defaultValue={props.item} />
       ) : (
         props.item
       )}
-      {/* {editable ? (
-        <p contentEditable='true' ref={inputRef}>
-          {props.item}
-        </p>
-      ) : (
-        <p ref={inputRef}>{props.item}</p>
-      )} */}
-
+      <button type='button' onClick={checkHandler}>
+        {props.listType === 'todo' ? 'Done' : 'Not Done'}
+      </button>
       {!editable && <button onClick={editHandler}>Edit</button>}
       {editable && <button onClick={sendEdit}>✔️</button>}
       <button onClick={deleteItem}>Delete</button>

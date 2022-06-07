@@ -5,35 +5,35 @@ import List from './components/List';
 const starterList = [
   {
     nameOfList: 'List #1',
-    id: 1,
+    id: new Date(),
     items: {
-      todo: ['laundry', 'wash floors'],
-      done: ['download todo app', 'sweep'],
+      todo: [{ name: 'laundry', id: new Date() }],
+      done: [{ name: 'download todo app', id: new Date() + 1 }],
     },
   },
   {
     nameOfList: 'List #2',
-    id: 2,
+    id: new Date(),
     items: {
-      todo: ['clean kitchen', 'garbages'],
-      done: ['groceries', 'bathrooms'],
+      todo: [{ name: 'milk', id: new Date() }],
+      done: [{ name: 'choco chips', id: new Date() }],
     },
   },
 ];
-
-const emptyList = {
-  nameOfList: 'New List',
-  id: 1,
-  items: {
-    todo: ['add item to begin'],
-    done: ['download todo app'],
-  },
-};
 
 function App() {
   const [lists, setLists] = useState(starterList);
 
   const addList = () => {
+    let emptyList = {
+      nameOfList: 'New List',
+      id: new Date(),
+      items: {
+        todo: [{ name: 'add item to start', id: new Date() }],
+        done: [{ name: 'completed items will show here', id: new Date() }],
+      },
+    };
+
     setLists((prev) => {
       return [...prev, emptyList];
     });
@@ -44,7 +44,7 @@ function App() {
       lists.map((list) => {
         if (list.id === listID) {
           const listCopy = { ...list };
-          listCopy.items.todo.push(item);
+          listCopy.items.todo.push({ name: item, id: new Date() });
           return listCopy;
         } else return list;
       })
@@ -93,23 +93,23 @@ function App() {
     );
   };
 
-  const checkItem = (item, listID, listType) => {
+  const checkItem = (item, itemID, listID, listType) => {
     setLists(
       lists.map((list) => {
         if (list.id === listID) {
           const listCopy = { ...list };
           if (listType === 'todo') {
             let index = listCopy.items.todo.findIndex((i) => {
-              return i === item;
+              return i.id === itemID;
             });
             listCopy.items.todo.splice(index, 1);
-            listCopy.items.done.push(item);
+            listCopy.items.done.push({ name: item, id: itemID });
           } else {
             let index = listCopy.items.done.findIndex((i) => {
-              return i === item;
+              return i.id === itemID;
             });
             listCopy.items.done.splice(index, 1);
-            listCopy.items.todo.push(item);
+            listCopy.items.todo.push({ name: item, id: itemID });
           }
           return listCopy;
         } else return list;

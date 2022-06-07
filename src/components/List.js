@@ -7,8 +7,8 @@ const List = (props) => {
     props.add(item, listID);
   };
 
-  const checkItem = (item, ID, type) => {
-    props.check(item, ID, type);
+  const checkItem = (item, itemID, listID, type) => {
+    props.check(item, itemID, listID, type);
   };
 
   const deleteItem = (item, ID, type) => {
@@ -37,8 +37,9 @@ const List = (props) => {
         {props.data.items.todo.map((item, i) => {
           return (
             <Item
-              key={i}
-              item={item}
+              key={item.id}
+              item={item.name}
+              itemID={item.id}
               check={checkItem}
               delete={deleteItem}
               edit={editItem}
@@ -53,8 +54,9 @@ const List = (props) => {
         {props.data.items.done.map((item, i) => {
           return (
             <Item
-              key={i}
-              item={item}
+              key={item.id}
+              item={item.name}
+              itemID={item.id}
               check={checkItem}
               delete={deleteItem}
               edit={editItem}
