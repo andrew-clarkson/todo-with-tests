@@ -1,78 +1,50 @@
-import React, { useState } from 'react';
+import React from 'react';
 import AddItem from './AddItem';
 import Item from './Item';
 
-const List = () => {
-  const [todo, setTodo] = useState([
-    'laundry',
-    'dishes',
-    'windows',
-    'mop floors',
-  ]);
-  const [done, setDone] = useState(['download todo app']);
-
-  const addItem = (item) => {
-    setTodo((prev) => [...prev, item]);
+const List = (props) => {
+  const addItem = (item, listID) => {
+    props.add(item, listID);
   };
 
-  const checked = (item, fromList) => {
-    if (fromList === 'todo') {
-      setDone((prev) => [item, ...prev]);
-      let newTodo = todo.filter((todo) => {
-        return todo !== item;
-      });
-      setTodo(newTodo);
-    } else {
-      setTodo((prev) => [item, ...prev]);
-      let newDone = done.filter((done) => {
-        return done !== item;
-      });
-      setDone(newDone);
-    }
+  const checkItem = (item, ID, type) => {
+    props.check(item, ID, type);
   };
 
-  const deleteItem = (item, fromList) => {
-    if (fromList === 'todo') {
-      let newTodo = todo.filter((todo) => {
-        return todo !== item;
-      });
-      setTodo(newTodo);
-    } else {
-      let newDone = done.filter((done) => {
-        return done !== item;
-      });
-      setDone(newDone);
-    }
+  const deleteItem = (item, ID, type) => {
+    props.delete(item, ID, type);
   };
 
   return (
     <div>
-      <AddItem addItem={addItem} />
-
+      <AddItem addItem={addItem} listID={props.data.id} />
+      <h3>{props.data.nameOfList}</h3>
       <h3>To-do</h3>
       <ul>
-        {todo.map((item, i) => {
+        {props.data.items.todo.map((item, i) => {
           return (
             <Item
               key={i}
               item={item}
-              checked={checked}
+              check={checkItem}
               delete={deleteItem}
-              fromList='todo'
+              listID={props.data.id}
+              listType='todo'
             />
           );
         })}
       </ul>
       <h3>Done</h3>
       <ul>
-        {done.map((item, i) => {
+        {props.data.items.done.map((item, i) => {
           return (
             <Item
               key={i}
               item={item}
-              checked={checked}
+              check={checkItem}
               delete={deleteItem}
-              fromList='done'
+              listID={props.data.id}
+              listType='done'
             />
           );
         })}

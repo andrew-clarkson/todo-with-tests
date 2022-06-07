@@ -1,18 +1,18 @@
 import React from 'react';
 
 const Item = (props) => {
-  const clickHandler = (event) => {
+  const checkHandler = (event) => {
     event.preventDefault();
-    props.checked(props.item, props.fromList);
+    props.check(props.item, props.listID, props.listType);
   };
   const deleteItem = (event) => {
     event.preventDefault();
-    props.delete(props.item, props.fromList);
+    props.delete(props.item, props.listID, props.listType);
   };
   return (
     <li>
-      <button type='button' onClick={clickHandler}>
-        {props.fromList === 'todo' ? 'Done' : 'NotDone'}
+      <button type='button' onClick={checkHandler}>
+        {props.listType === 'todo' ? 'Done' : 'Not Done'}
       </button>
       {props.item}
       <button onClick={deleteItem}>Delete</button>

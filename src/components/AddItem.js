@@ -7,7 +7,7 @@ const AddItem = (props) => {
     event.preventDefault();
     const item = inputRef.current.value;
     if (item.length > 2) {
-      props.addItem(item);
+      props.addItem(item, props.listID);
       inputRef.current.value = '';
     } else alert('Please make new todo item longer than 2 characters.');
   };
