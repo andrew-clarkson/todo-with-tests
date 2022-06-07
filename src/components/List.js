@@ -14,8 +14,13 @@ const List = (props) => {
   const deleteItem = (item, ID, type) => {
     props.delete(item, ID, type);
   };
-  const deleteAll = () => {
-    props.deleteAll(props.data.id);
+
+  const deleteList = () => {
+    props.deleteList(props.data.id);
+  };
+
+  const deleteCompleted = () => {
+    props.deleteCompleted(props.data.id);
   };
 
   return (
@@ -52,7 +57,8 @@ const List = (props) => {
           );
         })}
       </ul>
-      <button onClick={deleteAll}>Delete All Completed</button>
+      <button onClick={deleteList}>Delete List</button>
+      <button onClick={deleteCompleted}>Delete All Completed</button>
     </div>
   );
 };

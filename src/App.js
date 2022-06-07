@@ -58,11 +58,24 @@ function App() {
     );
   };
 
-  const deleteAll = (id) => {
+  const deleteList = (id) => {
     let newLists = [...lists].filter((list) => {
       return list.id !== id;
     });
     setLists(newLists);
+  };
+
+  const deleteCompleted = (id) => {
+    setLists(
+      lists.map((list) => {
+        if (list.id === id) {
+          let listCopy = { ...list };
+          listCopy.items.done = [];
+
+          return listCopy;
+        } else return list;
+      })
+    );
   };
 
   const checkItem = (item, listID, listType) => {
@@ -97,7 +110,8 @@ function App() {
             data={list}
             add={addItem}
             delete={deleteItem}
-            deleteAll={deleteAll}
+            deleteList={deleteList}
+            deleteCompleted={deleteCompleted}
             check={checkItem}
           ></List>
         );
