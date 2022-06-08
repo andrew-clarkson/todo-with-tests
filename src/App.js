@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
 import './App.css';
 import List from './components/List';
 
@@ -23,6 +24,19 @@ const starterList = [
 
 function App() {
   const [lists, setLists] = useState(starterList);
+
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem('lists'));
+    if (!data) {
+      setLists(starterList);
+    } else {
+      setLists(data);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('lists', JSON.stringify(lists));
+  }, [lists]);
 
   const addList = () => {
     let emptyList = {
