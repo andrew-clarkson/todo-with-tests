@@ -13,13 +13,13 @@ const AddItem = (props) => {
   };
 
   return (
-    <div>
+    <>
       <h3>Add Item</h3>
       <form onSubmit={newItem}>
-        <input type='text' ref={inputRef} />
-        <button>Add</button>
+        <input data-cy='input' type='text' ref={inputRef} />
+        <button data-cy='add'>Add</button>
       </form>
-    </div>
+    </>
   );
 };
 

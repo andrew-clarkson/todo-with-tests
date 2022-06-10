@@ -1,30 +1,12 @@
 import { useState, useEffect } from 'react';
-
+import starterList from './starterList';
 import './App.css';
 import List from './components/List';
-
-const starterList = [
-  {
-    nameOfList: 'List #1',
-    id: new Date(),
-    items: {
-      todo: [{ name: 'add item to start', id: new Date() }],
-      done: [{ name: 'download todo app', id: new Date() - 1 }],
-    },
-  },
-  {
-    nameOfList: 'List #2',
-    id: new Date(),
-    items: {
-      todo: [{ name: 'add item to start', id: new Date() }],
-      done: [{ name: 'completed items will show here', id: new Date() - 1 }],
-    },
-  },
-];
 
 function App() {
   const [lists, setLists] = useState(starterList);
 
+  // fetch local stoarge data if it exists
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem('lists'));
     if (!data) {
@@ -34,12 +16,13 @@ function App() {
     }
   }, []);
 
+  // store list data on every change
   useEffect(() => {
     localStorage.setItem('lists', JSON.stringify(lists));
   }, [lists]);
 
   const addList = () => {
-    let emptyList = {
+    let newList = {
       nameOfList: 'New List',
       id: new Date(),
       items: {
@@ -47,9 +30,8 @@ function App() {
         done: [{ name: 'completed items will show here', id: new Date() - 1 }],
       },
     };
-
     setLists((prev) => {
-      return [...prev, emptyList];
+      return [...prev, newList];
     });
   };
 
@@ -155,7 +137,7 @@ function App() {
   };
 
   return (
-    <div className='App'>
+    <>
       <button onClick={addList}>Add New List</button>
       {lists.map((list, i) => {
         return (
@@ -171,7 +153,7 @@ function App() {
           ></List>
         );
       })}
-    </div>
+    </>
   );
 }
 

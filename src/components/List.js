@@ -28,16 +28,16 @@ const List = (props) => {
   };
 
   return (
-    <div>
+    <>
       <h3>{props.data.nameOfList}</h3>
 
       <AddItem addItem={addItem} listID={props.data.id} />
       <h3>To-do</h3>
-      <ul>
+      <ul className='todolist'>
         {props.data.items.todo.map((item, i) => {
           return (
             <Item
-              key={item.id}
+              key={item.id + i}
               item={item.name}
               itemID={item.id}
               check={checkItem}
@@ -50,11 +50,11 @@ const List = (props) => {
         })}
       </ul>
       <h3>Done</h3>
-      <ul>
+      <ul className='donelist'>
         {props.data.items.done.map((item, i) => {
           return (
             <Item
-              key={item.id}
+              key={item.id + i}
               item={item.name}
               itemID={item.id}
               check={checkItem}
@@ -68,7 +68,7 @@ const List = (props) => {
       </ul>
       <button onClick={deleteList}>Delete List</button>
       <button onClick={deleteCompleted}>Delete All Completed</button>
-    </div>
+    </>
   );
 };
 

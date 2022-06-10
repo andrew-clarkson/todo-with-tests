@@ -8,7 +8,7 @@ const Item = (props) => {
     event.preventDefault();
     props.check(props.item, props.itemID, props.listID, props.listType);
   };
-  const deleteItem = (event) => {
+  const deleteHandler = (event) => {
     event.preventDefault();
     props.delete(props.item, props.listID, props.listType);
   };
@@ -36,12 +36,18 @@ const Item = (props) => {
       ) : (
         props.item
       )}
-      <button type='button' onClick={checkHandler}>
-        {props.listType === 'todo' ? 'Done' : 'Not Done'}
-      </button>
-      {!editable && <button onClick={editHandler}>Edit</button>}
       {editable && <button onClick={sendEdit}>✔️</button>}
-      <button onClick={deleteItem}>Delete</button>
+      {!editable && (
+        <>
+          <button data-cy='doneButton' type='button' onClick={checkHandler}>
+            {props.listType === 'todo' ? 'Done' : 'Not Done'}
+          </button>
+          <button onClick={editHandler}>Edit</button>
+          <button data-cy='deleteButton' onClick={deleteHandler}>
+            Delete
+          </button>
+        </>
+      )}
     </li>
   );
 };
