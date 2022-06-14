@@ -1,6 +1,7 @@
 import React from 'react';
 import AddItem from './AddItem';
 import Item from './Item';
+import '../App.css';
 
 const List = (props) => {
   const addItem = (item, listID) => {
@@ -28,8 +29,8 @@ const List = (props) => {
   };
 
   return (
-    <>
-      <h3>{props.data.nameOfList}</h3>
+    <div class='list'>
+      <h2>{props.data.nameOfList}</h2>
 
       <AddItem addItem={addItem} listID={props.data.id} />
       <h3>To-do</h3>
@@ -66,9 +67,15 @@ const List = (props) => {
           );
         })}
       </ul>
-      <button onClick={deleteList}>Delete List</button>
-      <button onClick={deleteCompleted}>Delete All Completed</button>
-    </>
+      <div className='center-div'>
+        <button className='delete-item' onClick={deleteList}>
+          Delete List
+        </button>
+        <button className='delete-item' onClick={deleteCompleted}>
+          Delete Completed
+        </button>
+      </div>
+    </div>
   );
 };
 

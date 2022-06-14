@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import '../App.css';
 
 const AddItem = (props) => {
   const inputRef = useRef();
@@ -13,13 +14,14 @@ const AddItem = (props) => {
   };
 
   return (
-    <>
-      <h3>Add Item</h3>
+    <div className='center-div'>
       <form onSubmit={newItem}>
         <input data-cy='input' type='text' ref={inputRef} />
-        <button data-cy='add'>Add</button>
+        <button className='' data-cy='add'>
+          <i class='fa-solid fa-plus fa-2xl'></i>
+        </button>
       </form>
-    </>
+    </div>
   );
 };
 

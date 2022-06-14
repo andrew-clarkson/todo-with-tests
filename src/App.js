@@ -138,21 +138,29 @@ function App() {
 
   return (
     <>
-      <button onClick={addList}>Add New List</button>
-      {lists.map((list, i) => {
-        return (
-          <List
-            key={i}
-            data={list}
-            add={addItem}
-            delete={deleteItem}
-            deleteList={deleteList}
-            deleteCompleted={deleteCompleted}
-            edit={editItem}
-            check={checkItem}
-          ></List>
-        );
-      })}
+      <h1>Don't Forget!</h1>
+      <div className='center-div'>
+        <button className='add-list' onClick={addList}>
+          Add New List
+        </button>
+      </div>
+
+      <div id='lists'>
+        {lists.map((list, i) => {
+          return (
+            <List
+              key={i}
+              data={list}
+              add={addItem}
+              delete={deleteItem}
+              deleteList={deleteList}
+              deleteCompleted={deleteCompleted}
+              edit={editItem}
+              check={checkItem}
+            ></List>
+          );
+        })}
+      </div>
     </>
   );
 }
