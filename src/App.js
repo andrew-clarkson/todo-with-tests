@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import starterList from './starterList';
 import './App.css';
 import List from './components/List';
+import Footer from './components/Footer';
 
 function App() {
   const [lists, setLists] = useState(starterList);
@@ -22,12 +23,11 @@ function App() {
   }, [lists]);
 
   const addList = () => {
-    let newList = {
-      nameOfList: 'New List',
+    const newList = {
       id: new Date(),
       items: {
         todo: [{ name: 'add item to start', id: new Date() }],
-        done: [{ name: 'completed items will show here', id: new Date() - 1 }],
+        done: [{ name: 'download todo app', id: new Date() }],
       },
     };
     setLists((prev) => {
@@ -47,19 +47,19 @@ function App() {
     );
   };
 
-  const deleteItem = (item, listID, listType) => {
+  const deleteItem = (itemID, listID, listType) => {
     setLists(
       lists.map((list) => {
         if (list.id === listID) {
           const listCopy = { ...list };
           if (listType === 'todo') {
             let index = listCopy.items.todo.findIndex((i) => {
-              return i === item;
+              return i.id === itemID;
             });
             listCopy.items.todo.splice(index, 1);
           } else {
             let index = listCopy.items.done.findIndex((i) => {
-              return i === item;
+              return i.id === itemID;
             });
             listCopy.items.done.splice(index, 1);
           }
@@ -161,6 +161,7 @@ function App() {
           );
         })}
       </div>
+      <Footer />
     </>
   );
 }

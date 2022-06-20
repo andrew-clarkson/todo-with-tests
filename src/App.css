@@ -2,6 +2,15 @@
   box-sizing: border-box;
 }
 
+a {
+  text-decoration: none;
+  color: #f94c66;
+}
+
+a:visited {
+  color: #f94c66;
+}
+
 body {
   background-color: #f94c66;
   font-family: 'Hubballi', cursive;
@@ -25,12 +34,23 @@ button:hover {
   transition-delay: 100ms;
 }
 
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #93e9be;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 0px 0px 8px 2px pink;
+}
+
 h1 {
   margin: 0;
   text-align: center;
-
+  color: #93e9be;
   font-weight: 300;
-  font-size: 3rem;
+  font-size: 4rem;
 }
 
 h2 {
@@ -89,6 +109,11 @@ ul {
   color: #f94c66;
 }
 
+.fa-brands {
+  padding: 4px;
+  font-size: 1.2rem;
+}
+
 .icon-button {
   padding: 7px;
 }
@@ -97,6 +122,13 @@ ul {
   display: inline-block;
   width: 60%;
   word-wrap: break-word;
+  color: #f94c66;
+
+  font-size: 1.05rem;
+}
+
+.name-and-year {
+  color: #f94c66;
 }
 
 #lists {
@@ -104,7 +136,7 @@ ul {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  margin: -5px -5px;
+  margin-bottom: 27px;
   padding: 5px;
 }
 

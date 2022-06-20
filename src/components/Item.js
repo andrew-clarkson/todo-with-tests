@@ -11,7 +11,7 @@ const Item = (props) => {
   };
   const deleteHandler = (event) => {
     event.preventDefault();
-    props.delete(props.item, props.listID, props.listType);
+    props.delete(props.itemID, props.listID, props.listType);
   };
 
   const editHandler = (event) => {
