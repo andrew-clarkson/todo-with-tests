@@ -17,8 +17,8 @@ const AddItem = (props) => {
     <div className='center-div'>
       <form onSubmit={newItem}>
         <input data-cy='input' type='text' ref={inputRef} />
-        <button className='' data-cy='add'>
-          <i class='fa-solid fa-plus fa-2xl'></i>
+        <button className='icon-button' data-cy='add'>
+          <i className='fa-solid fa-plus fa-2xl'></i>
         </button>
       </form>
     </div>

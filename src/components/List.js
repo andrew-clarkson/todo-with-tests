@@ -29,8 +29,8 @@ const List = (props) => {
   };
 
   return (
-    <div class='list'>
-      <h2>{props.data.nameOfList}</h2>
+    <div className='list'>
+      {/* <h2>{props.data.nameOfList}</h2> */}
 
       <AddItem addItem={addItem} listID={props.data.id} />
       <h3>To-do</h3>
@@ -67,11 +67,11 @@ const List = (props) => {
           );
         })}
       </ul>
-      <div className='center-div'>
-        <button className='delete-item' onClick={deleteList}>
+      <div className='center-div delete-group'>
+        <button className='delete-list' onClick={deleteList}>
           Delete List
         </button>
-        <button className='delete-item' onClick={deleteCompleted}>
+        <button className='delete-list' onClick={deleteCompleted}>
           Delete Completed
         </button>
       </div>

@@ -35,14 +35,15 @@ const Item = (props) => {
       {!editable && (
         <button
           data-cy='doneButton'
-          className='change'
+          data-testid='check'
+          className='change icon-button'
           type='button'
           onClick={checkHandler}
         >
           {props.listType === 'todo' ? (
-            <i class='fa-solid fa-check fa-2xl'></i>
+            <i className='fa-solid fa-check fa-2xl'></i>
           ) : (
-            <i class='fa-solid fa-rotate-left fa-xl'></i>
+            <i className='fa-solid fa-rotate-left fa-xl'></i>
           )}
         </button>
       )}
@@ -56,22 +57,31 @@ const Item = (props) => {
       </div>
 
       {editable && (
-        <button className='change' onClick={sendEdit}>
-          ✔️
+        <button
+          className='change change-item-group icon-button'
+          onClick={sendEdit}
+          data-testid='sendEdit'
+        >
+          <i className='fa-solid fa-check fa-2xl fa-beat'></i>
         </button>
       )}
 
       {!editable && (
-        <div className='changegroup'>
-          <button className='change' onClick={editHandler}>
-            <i class='fa-solid fa-pen fa-xl'></i>
+        <div className='change-item-group'>
+          <button
+            className='change icon-button'
+            onClick={editHandler}
+            data-testid='edit'
+          >
+            <i className='fa-solid fa-pen fa-xl'></i>
           </button>
           <button
-            className='change'
+            className='change icon-button'
             data-cy='deleteButton'
             onClick={deleteHandler}
+            data-testid='delete'
           >
-            <i class='fa-solid fa-trash-can fa-xl'></i>
+            <i className='fa-solid fa-trash-can fa-xl'></i>
           </button>
         </div>
       )}

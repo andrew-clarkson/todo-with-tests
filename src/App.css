@@ -12,7 +12,7 @@ button {
   border-radius: 10px;
   padding: 4px 6px;
   margin: 2px;
-  font-weight: bold;
+  font-family: 'Hubballi', cursive;
   background-color: transparent;
   color: white;
 }
@@ -25,13 +25,10 @@ button:hover {
   transition-delay: 100ms;
 }
 
-form {
-}
-
 h1 {
   margin: 0;
   text-align: center;
-  font-family: 'Licorice', cursive;
+
   font-weight: 300;
   font-size: 3rem;
 }
@@ -52,11 +49,16 @@ input {
   box-shadow: 0px 0px 8px 1px pink;
 }
 
-.add-item {
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 .add-list {
   padding: 5px 10px;
+  border: solid 1px white;
+  font-size: 1.05rem;
 }
 
 .change {
@@ -64,7 +66,7 @@ input {
   color: black;
 }
 
-.changegroup {
+.change-item-group {
   display: inline-block;
   float: right;
 }
@@ -74,20 +76,27 @@ input {
   justify-content: center;
 }
 
-.delete-item {
-  background-color: #bd4291;
+.delete-group {
+  margin-top: 15px;
+}
+
+.delete-list {
+  background-color: #f94c66;
+  font-size: 1.05rem;
+}
+
+.fa-solid {
+  color: #f94c66;
+}
+
+.icon-button {
+  padding: 7px;
 }
 
 .list-item {
   display: inline-block;
   width: 60%;
   word-wrap: break-word;
-}
-
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
 }
 
 #lists {
@@ -102,15 +111,10 @@ ul {
 #lists .list {
   background-color: #93e9be;
   width: 24%;
-  /* height: 500px; */
   margin: 5px 5px;
   padding: 10px;
   border-radius: 10px;
   box-shadow: 0px 0px 8px 2px pink;
-}
-
-.fa-solid {
-  color: #f94c66;
 }
 
 @media (max-width: 1200px) {
@@ -132,6 +136,7 @@ ul {
 
   .list-item {
     width: 75%;
+    vertical-align: text-top;
   }
 }
 
