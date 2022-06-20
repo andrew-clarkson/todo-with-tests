@@ -1,4 +1,4 @@
-# Don't Forget - React Todo w/ Testing
+# Don't Forget! - React Todo w/ Testing
 
 [DEMO LINK on Netlify](https://dontforgettodo.netlify.app/)
 
@@ -26,6 +26,7 @@ The todo app is so prevalent for a reason! I built this one to brush up on some 
 - Delete item
 - Delete all completed items
 - Delete list
+- Persists data in local storage
 
 ## Lessons Learned During Development
 
